@@ -47,5 +47,47 @@ public class YayArrays {
     values reflected outside the method as well. If you assign the reference
     type to a new reference type inside the method, those changes will only be local to the method.**/
   }
-  
+  public static boolean isMagicSquare(int[][] arr) {
+    //are row sums equal?
+    int rowSum = 0;
+    int[] rowSums = new int[arr.length];
+    for(int i = 0; i < arr.length; i++) {
+      for(int j = 0; j < arr[i].length; j++) {
+        rowSum = rowSum + arr[i][j];
+      }
+      rowSums[i] = rowSum;
+      rowSum = 0;
+    }
+    for(int i = 0; i < rowSums.length - 1; i++) {
+      if(rowSums[i] != rowSums[i + 1]) { return false; }
+    }
+
+    //are column sums equal?
+    int colSum = 0;
+    int[] colSums = new int[arr.length];
+    for(int i = 0; i < arr[0].length; i++) {
+      for(int j = 0; j < arr.length; j++) {
+        colSum = colSum + arr[j][i];
+      }
+      colSums[i] = colSum;
+      colSum = 0;
+    }
+    for(int i = 0; i < colSums.length - 1; i++) {
+      if(colSums[i] != colSums[i + 1]) { return false; }
+    }
+
+    //are diagonal sums equal?
+    int diag1 = 0;
+    int diag2 = 0;
+    for(int i = 0; i < arr.length; i++) {
+      diag1 = diag1 + arr[i][i];
+    }
+    int j = 0;
+    for(int i = arr.length - 1; i >=0; i--) {
+      diag2 = diag2 + arr[j][i];
+      j++;
+    }
+    if(diag1 != diag2) { return false; }
+    return true;
+  }
 }
