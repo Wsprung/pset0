@@ -5,7 +5,7 @@ public class YayArrays {
   public static void main(String[] args) {
     //testing priceIsRight()
     System.out.println(priceIsRight(new int[] {2,5,9},6));
-    System.out.println(priceIsRight(new int[] {2,5,9},9));
+    System.out.println(priceIsRight(new int[] {101,102,103,1},100));
 
     //testing clump()
     String[] helpTC = {"hi", "there", "what", "is", "up","?"};
@@ -25,7 +25,7 @@ public class YayArrays {
     boolean ret = false;
     //test to see what number, if any, is less than or equal to correctP, and the closest to correctP out of all of bids
     for(int i = 1; i < bids.length; i++) {
-      if(correctP >= bids[i] && correctP - priceRN > correctP - bids[i]) {
+      if(correctP >= bids[i] && Math.abs(correctP - priceRN) > Math.abs(correctP - bids[i]) || priceRN > correctP) {
         priceRN = bids[i];
         ret = true;
       }
